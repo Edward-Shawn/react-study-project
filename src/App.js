@@ -1,21 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import FontIcon from "./component/icons/FontIcon";
 
 function App() {
+  console.log(FontIcon);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        리액트 시작
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FontIcon text="아이콘" icon="faCoffee" />
     </div>
   );
 }
