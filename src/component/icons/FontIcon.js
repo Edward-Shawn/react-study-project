@@ -1,12 +1,11 @@
 import React from "react";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function FontIcon({ text, icon }) {
+function FontIcon({ text, icons }) {
   return (
     <>
       <h1>{text}</h1>
-      <FontAwesomeIcon icon={faCoffee} />
+      <FontAwesomeIcon icon={icons} />
     </>
   );
 }
