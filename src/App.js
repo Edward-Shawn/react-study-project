@@ -6,7 +6,7 @@ function App() {
   console.log(FontIcon);
   return (
     <div className="App">
-      <FontIcon text="아이콘 dd" icons={faSearch} />
+      <FontIcon text="아이콘" icons={faSearch} />
     </div>
   );
 }
