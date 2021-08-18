@@ -9,19 +9,16 @@ function App() {
   console.log(FontIcon);
   return (
     <BrowserRouter>
-      {" // (1) "}
-
       <div style={{ padding: 20, border: "5px solid gray" }}>
         <Link to="/">홈</Link>
-        {/* // (2) */}
+
         <br />
         <Link to="/photo">사진</Link>
         <br />
         <Link to="rooms">방 소개</Link>
         <br />
         <Switch>
-          {"// (3) "}
-          <Route exact path="/" component={Home} /> (4)
+          <Route exact path="/" component={Home} />
           <Route path="/photo" component={Photo} />
           <Route path="/rooms" component={Rooms} />
         </Switch>
