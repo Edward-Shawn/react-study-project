@@ -1,12 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Rooms from "./Rooms";
 import "./App.css";
-import { faCoffee, faSearch } from "@fortawesome/free-solid-svg-icons";
-import FontIcon from "./component/icons/FontIcon";
 
 function App() {
-  console.log(FontIcon);
   return (
     <BrowserRouter>
       <div style={{ padding: 20, border: "5px solid gray" }}>
