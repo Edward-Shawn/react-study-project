@@ -11,7 +11,7 @@ function App() {
         <br />
         <Link to="/photo">사진</Link>
         <br />
-        <Link to="rooms">방 소개</Link>
+        <Link to="rooms">페이지 소개</Link>
         <br />
         <Switch>
           <Route exact path="/" component={Home} />
