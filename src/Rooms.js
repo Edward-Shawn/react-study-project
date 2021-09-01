@@ -4,7 +4,7 @@ import { Route, Link } from "react-router-dom";
 export default function Rooms({ match }) {
   return (
     <div>
-      <h2>여기는 방을 소개하는 페이지입니다.</h2>
+      <h2>여기는 방을 소개</h2>
       <Link to={`${match.url}/blueRoom`}> 파란 방</Link>
       <br />
       <Link to={`${match.url}/greenRoom`}> 초록 방</Link>
