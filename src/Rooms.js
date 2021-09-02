@@ -5,9 +5,9 @@ export default function Rooms({ match }) {
   return (
     <div>
       <h2>여기는 방을 소개</h2>
-      <Link to={`${match.url}/blueRoom`}> 파란 방</Link>
+      <Link to={`${match.url}/blueRoom`}>파란 방</Link>
       <br />
-      <Link to={`${match.url}/greenRoom`}> 초록 방</Link>
+      <Link to={`${match.url}/greenRoom`}>초록 방</Link>
       <br />
       <Route path={`${match.url}/:roomId`} component={Room} />
       <Route
