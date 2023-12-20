@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-const List = ({ title, text, show, setShow }) => {
+const List = ({ title, text, show, setShow, setTitle, i, onRemoveList }) => {
   const handleModal = () => {
-    // if (show == false) {
-    //   setShow(true);
-    // } else {
-    //   setShow(false);
-    // }
+    setTitle(i);
+    // show === false ? setShow(true) : setShow(false);
 
-    show === false ? setShow(true) : setShow(false);
-
-    // setShow(!show);
+    setShow(!show);
   };
   const [good, setGood] = useState(0);
 
@@ -21,9 +16,18 @@ const List = ({ title, text, show, setShow }) => {
     <div className="list">
       <h4 onClick={handleModal}>
         {title}
-        <span onClick={clickHandle}>❤️</span> {good}
+        <span
+          onClick={(e) => {
+            e.stopPropagation();
+            clickHandle();
+          }}
+        >
+          ❤️
+        </span>{" "}
+        {good}
       </h4>
       <p>{text}</p>
+      <button onClick={() => onRemoveList(title)}>삭제</button>
     </div>
   );
 };

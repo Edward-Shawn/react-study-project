@@ -21,11 +21,15 @@ function App() {
     },
   ]);
 
-  const num = [1, 2];
+  const [title, setTitle] = useState(0);
 
   const [show, setShow] = useState(false);
 
-  const clickTitleChange = () => {};
+  const clickTitleChange = () => {
+    let copy = [...list];
+    copy[0].title = "sadfsdf";
+    setList(copy);
+  };
 
   const handleSort = () => {
     var sortArray = [...classType];
@@ -33,14 +37,23 @@ function App() {
     setClassType(sortArray);
   };
 
-  const openModal = () => {};
+  const [inputData, setInputData] = useState("");
 
-  // const [good, setGood] = useState(0);
+  const onRemoveList = (title) => {
+    setList((oldvalue) => {
+      return oldvalue.filter((item) => item.title !== title);
+    });
+  };
 
-  const [good, setGood] = useState([0, 0, 0]);
-
-  const clickHandle = ({ index }) => {
-    console.log(index);
+  const onAddList = (e) => {
+    let copy = [...list];
+    const newList = {
+      title: e,
+      text: "new",
+    };
+    copy.unshift(newList);
+    // setList([...copy, newList]);
+    setList(copy);
   };
 
   return (
@@ -48,57 +61,39 @@ function App() {
       <div className="nav">
         <h4>리액트 테스트 사이트</h4>
       </div>
+      <input
+        onChange={(e) => {
+          setInputData(e.target.value);
+        }}
+      />
+      <button onClick={() => onAddList(inputData)}>리스트 추가</button>
       <button onClick={clickTitleChange}>타이틀 수정</button>
       <button onClick={handleSort}>sort</button>
-      <button onClick={openModal}>모달 띄우기</button>
-      {/* {list.map((item, i) => {
+      {list.map((item, i) => {
         return (
           <List
             title={item.title}
             text={item.text}
             show={show}
             setShow={setShow}
+            setTitle={setTitle}
+            i={i}
             key={i}
+            onRemoveList={onRemoveList}
           />
         );
-      })} */}
-      {list.map((item, index) => {
-        return (
-          <div className="list" key={index}>
-            <h4>
-              {item.title}{" "}
-              <span
-                onClick={() => {
-                  let copy = [...good];
-                  copy[index] = copy[index] + 1;
-                  setGood(copy);
-                }}
-              >
-                ❤️
-              </span>{" "}
-              {good[index]}
-            </h4>
-            <p>{item.text}</p>
-          </div>
-        );
       })}
-      <div></div>
 
-      {/* <div className="list">
-        <h4>
-          {classType[0]} <span onClick={clickHandle}>❤️</span> {good}
-        </h4>
-        <p>{rifle}</p>
-      </div>
-      <div className="list">
-        <h4>{classType[1]}</h4>
-        <p>{smg}</p>
-      </div>
-      <div className="list">
-        <h4>{classType[2]}</h4>
-        <p>{lmg}</p>
-      </div> */}
-      {show ? <Modal /> : ""}
+      {show ? (
+        <Modal
+          color={"yellow"}
+          list={list}
+          title={title}
+          clickTitleChange={clickTitleChange}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
