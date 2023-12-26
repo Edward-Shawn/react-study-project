@@ -1,7 +1,5 @@
 import { Button, Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 const ListItem = (props) => {
-  console.log(props.shoes.id);
-
   const imgid = props.shoes.id + 1;
   return (
     <Col>

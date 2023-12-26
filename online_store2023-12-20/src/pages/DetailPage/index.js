@@ -7,19 +7,23 @@ const DetailPage = (props) => {
 
   const imgNum = props.shoes[id].id + 1;
 
-  const [popup, setPopup] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPopup(false);
-    }, 2000);
-  });
-
   const [count, setCount] = useState(0);
+  // const [popup, setPopup] = useState(true);
+  const [alertPopup, setAlertPopup] = useState(false);
+
+  const [num, setNum] = useState("");
+  useEffect(() => {
+    if (isNaN(num) === true) {
+      setAlertPopup(true);
+    }
+  }, [num]);
+
   return (
     <>
       <Container>
-        {popup ? <div>2초지나면 없어짐 </div> : null}
-
+        <input onChange={(e) => setNum(e.target.value)} />
+        {/* {popup ? <div>2초지나면 없어짐 </div> : null} */}
+        {alertPopup ? <div>숫자만 입력하세요</div> : null}
         {count}
         <button
           onClick={() => {

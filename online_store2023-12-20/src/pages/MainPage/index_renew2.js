@@ -5,8 +5,8 @@ import ListItem from "component/List";
 import imgbg from "img/bg.jpg";
 import axios from "axios";
 const MainPage = () => {
-  const [list, setList] = useState([...data]);
   const [apiData, setApiData] = useState([]);
+  const [updateData, setUpdateData] = useState([...data]);
 
   useEffect(() => {
     axios
@@ -20,21 +20,21 @@ const MainPage = () => {
   }, []);
 
   const arraySort = () => {
-    setList([
-      ...list.sort((a, b) =>
+    let copy = [...updateData];
+    setUpdateData(
+      copy.sort((a, b) =>
         a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1
-      ),
-    ]);
+      )
+    );
   };
 
   const addList = () => {
-    //처음엔 2번째
-    //두번째는 3번째
-    //마지막은 스탑.
-
-    setList([...list, ...apiData]);
+    let copy = [...data];
+    // console.log(copy);
+    setUpdateData([...copy, ...apiData]);
   };
 
+  console.log(updateData);
   return (
     <>
       <div
@@ -44,7 +44,8 @@ const MainPage = () => {
       <button onClick={() => arraySort()}>정렬</button>
       <Container>
         <Row>
-          {list.map((item, index) => {
+          {updateData.map((item, index) => {
+            console.log(item);
             return <ListItem key={index} shoes={item} i={index + 1} />;
           })}
         </Row>
