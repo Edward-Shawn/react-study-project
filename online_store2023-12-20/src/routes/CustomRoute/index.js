@@ -24,9 +24,13 @@ export default function CustomRoute() {
           </Nav>
         </Container>
       </Navbar>
+
       <Routes>
         <Route path="/" element={<Pages.MainPage />} />
-        <Route path="/detail" element={<Pages.DetailPage shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={<Pages.DetailPage shoes={shoes} />}
+        />
       </Routes>
     </>
   );

@@ -4,13 +4,24 @@ import { a, b, data } from "data";
 import ListItem from "component/List";
 import imgbg from "img/bg.jpg";
 const MainPage = () => {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
+
+  const arraySort = () => {
+    let copy = [...shoes];
+    setShoes(
+      copy.sort((a, b) =>
+        a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1
+      )
+    );
+  };
+
   return (
     <>
       <div
         className="main_bg"
         style={{ backgroundImage: "url(" + imgbg + ")" }}
       ></div>
+      <button onClick={() => arraySort()}>정렬</button>
       <Container>
         <Row>
           {shoes.map((item, index) => {
