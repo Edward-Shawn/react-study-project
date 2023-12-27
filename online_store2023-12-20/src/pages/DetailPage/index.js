@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { Button, Navbar, Nav, Container, Row, Col } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Button, Navbar, Nav, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { Context1 } from "./../../routes/CustomRoute";
 
 const DetailPage = (props) => {
   let { id } = useParams();
@@ -8,10 +9,10 @@ const DetailPage = (props) => {
   const imgNum = props.shoes[id].id + 1;
 
   const [count, setCount] = useState(0);
-  // const [popup, setPopup] = useState(true);
   const [alertPopup, setAlertPopup] = useState(false);
-
   const [num, setNum] = useState("");
+  const [tab, setTab] = useState(0);
+
   useEffect(() => {
     if (isNaN(num) === true) {
       setAlertPopup(true);
@@ -49,8 +50,55 @@ const DetailPage = (props) => {
           </div>
         </Row>
       </Container>
+
+      <Nav defaultActiveKey="link0">
+        <Nav.Item as="li">
+          <Nav.Link
+            eventKey="link0"
+            onClick={() => {
+              setTab(0);
+            }}
+          >
+            link0
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item as="li">
+          <Nav.Link
+            eventKey="link1"
+            onClick={() => {
+              setTab(1);
+            }}
+          >
+            link1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item as="li">
+          <Nav.Link
+            eventKey="link2"
+            onClick={() => {
+              setTab(2);
+            }}
+          >
+            link2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabContent tab={tab} />
     </>
   );
+};
+
+const TabContent = ({ tab }) => {
+  let { stock, shoes } = useContext(Context1);
+  if (tab == 0) {
+    return <div>link0 {stock}</div>;
+  }
+  if (tab == 1) {
+    return <div>link1</div>;
+  }
+  if (tab == 2) {
+    return <div>link2</div>;
+  }
 };
 
 export default DetailPage;
