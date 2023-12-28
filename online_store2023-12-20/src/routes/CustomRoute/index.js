@@ -27,7 +27,6 @@ export default function CustomRoute() {
           </Nav>
         </Container>
       </Navbar>
-
       <Routes>
         <Route path="/" element={<Pages.MainPage />} />
         <Route
